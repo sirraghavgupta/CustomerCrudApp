@@ -14,6 +14,7 @@ public class CustomerDaoImpl implements CustomerDao{
     public Integer createCustomer(Customer customer) {
         ResultSet rs = null;
         PreparedStatement ps = null;
+        PreparedStatement ps2 = null;
         Integer id = null;
 
         Connection conn = DBConnection.getConnection();
@@ -29,7 +30,7 @@ public class CustomerDaoImpl implements CustomerDao{
             ps.setString(6, customer.getAreasOfInterest());
             ps.executeUpdate();
 
-            PreparedStatement ps2 = conn.prepareStatement("select * from customer_info where " +
+            ps2 = conn.prepareStatement("select * from customer_info where " +
                                                             "id=(select max(id) from customer_info);");
             rs = ps2.executeQuery();
             if(rs.next()){
@@ -40,6 +41,7 @@ public class CustomerDaoImpl implements CustomerDao{
         } finally {
             DBConnection.closeResultSet(rs);
             DBConnection.closeStatement(ps);
+            DBConnection.closeStatement(ps2);
             DBConnection.closeConnection(conn);
         }
         return id;
