@@ -1,8 +1,6 @@
 package com.raghav.utils;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DBConnection {
 
@@ -28,6 +26,26 @@ public class DBConnection {
         if(conn!=null){
             try {
                 conn.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+    public static void closeStatement(PreparedStatement ps){
+        if(ps != null){
+            try {
+                ps.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+    public static void closeResultSet(ResultSet rs){
+        if(rs != null){
+            try {
+                rs.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
