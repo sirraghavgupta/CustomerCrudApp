@@ -15,7 +15,7 @@ public class GetCustomerController extends HttpServlet {
     CustomerService customerService = new CustomerService();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
 
         Integer id = Integer.parseInt(req.getParameter("customerId"));

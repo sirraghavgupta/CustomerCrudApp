@@ -11,7 +11,7 @@
     <title>Get Customer Form</title>
 </head>
 <body>
-<form method="POST" action="GetCustomer">
+<form method="GET" action="GetCustomer">
     <h1>Get Customer Form</h1>
 
     <table>
